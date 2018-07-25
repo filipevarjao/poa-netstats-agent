@@ -45,9 +45,6 @@ defmodule POAAgent.Plugins.Collectors.System.MetricsTest do
 
     :application.ensure_all_started(:os_mon)
     with_mocks ([
-      # {:os , [], [type: fn() -> {:unix, :linux} end]}, we cannot mock this one
-      # {:cpu_sup , [], [nprocs: fn() -> 10 end,    we cannot mock those one too
-                     # util: fn() -> 10.0 end]},
       {:disksup , [], [get_almost_full_threshold: fn() -> 10 end]},
       {:memsup , [], [get_system_memory_data: fn() -> [{:ok, 10}] end]}
       ]) do
